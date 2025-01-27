@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 
 import * as path from "path";
 
-const EXTENSION_CONFIG_NAME = "bash-runner";
+const EXTENSION_CONFIG_NAME = "bash-sh-runner";
 const SHELL_PATH_CONFIG_KEY = "shellPath";
 
 export function getExtensionConfig(filepath?: vscode.Uri) {

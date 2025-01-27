@@ -1,5 +1,5 @@
 {
-  "name": "bash-runner",
+  "name": "bash-sh-runner",
   "displayName": "Bash Runner",
   "publisher": "leosj29",
   "description": "Run bash files in the VS Code terminal",
@@ -39,7 +39,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "bash-runner.execBashFile",
+        "command": "bash-sh-runner.execBashFile",
         "category": "Bash Runner",
         "title": "Run",
         "shortTitle": "Run bash file",
@@ -47,7 +47,7 @@
         "enablement": "resourceLangId == shellscript && !isInDiffEditor && shellExecutionSupported"
       },
       {
-        "command": "bash-runner.execBashFileArgs",
+        "command": "bash-sh-runner.execBashFileArgs",
         "category": "Bash Runner",
         "title": "Run with Arguments",
         "shortTitle": "Run bash file w/ args",
@@ -55,7 +55,7 @@
         "enablement": "resourceLangId == shellscript && !isInDiffEditor && shellExecutionSupported"
       },
       {
-        "command": "bash-runner.execBashFileRoot",
+        "command": "bash-sh-runner.execBashFileRoot",
         "category": "Bash Runner",
         "title": "Run as Root",
         "shortTitle": "Run bash file as root",
@@ -63,7 +63,7 @@
         "enablement": "resourceLangId == shellscript && !isInDiffEditor && shellExecutionSupported"
       },
       {
-        "command": "bash-runner.execBashFileArgsRoot",
+        "command": "bash-sh-runner.execBashFileArgsRoot",
         "category": "Bash Runner",
         "title": "Run with Arguments as Root",
         "shortTitle": "Run bash file w/ args as root",
@@ -73,7 +73,7 @@
     ],
     "keybindings": [
       {
-        "command": "bash-runner.execBashFile",
+        "command": "bash-sh-runner.execBashFile",
         "key": "F5",
         "enablement": "resourceLangId == shellscript && !isInDiffEditor && shellExecutionSupported && !inDebugMode"
       }
@@ -81,66 +81,66 @@
     "menus": {
       "explorer/context": [
         {
-          "command": "bash-runner.execBashFile",
+          "command": "bash-sh-runner.execBashFile",
           "group": "bash",
           "when": "resourceLangId == shellscript && shellExecutionSupported"
         },
         {
-          "command": "bash-runner.execBashFileArgs",
+          "command": "bash-sh-runner.execBashFileArgs",
           "group": "bash",
           "when": "resourceLangId == shellscript && shellExecutionSupported"
         },
         {
-          "command": "bash-runner.execBashFileRoot",
+          "command": "bash-sh-runner.execBashFileRoot",
           "group": "bash",
           "when": "resourceLangId == shellscript && shellExecutionSupported"
         },
         {
-          "command": "bash-runner.execBashFileArgsRoot",
+          "command": "bash-sh-runner.execBashFileArgsRoot",
           "group": "bash",
           "when": "resourceLangId == shellscript && shellExecutionSupported"
         }
       ],
       "editor/title/context": [
         {
-          "command": "bash-runner.execBashFile",
+          "command": "bash-sh-runner.execBashFile",
           "group": "bash",
           "when": "resourceLangId == shellscript && shellExecutionSupported"
         },
         {
-          "command": "bash-runner.execBashFileArgs",
+          "command": "bash-sh-runner.execBashFileArgs",
           "group": "bash",
           "when": "resourceLangId == shellscript && shellExecutionSupported"
         },
         {
-          "command": "bash-runner.execBashFileRoot",
+          "command": "bash-sh-runner.execBashFileRoot",
           "group": "bash",
           "when": "resourceLangId == shellscript && shellExecutionSupported"
         },
         {
-          "command": "bash-runner.execBashFileArgsRoot",
+          "command": "bash-sh-runner.execBashFileArgsRoot",
           "group": "bash",
           "when": "resourceLangId == shellscript && shellExecutionSupported"
         }
       ],
       "editor/title/run": [
         {
-          "command": "bash-runner.execBashFile",
+          "command": "bash-sh-runner.execBashFile",
           "group": "bash",
           "when": "resourceLangId == shellscript && !isInDiffEditor && shellExecutionSupported"
         },
         {
-          "command": "bash-runner.execBashFileArgs",
+          "command": "bash-sh-runner.execBashFileArgs",
           "group": "bash",
           "when": "resourceLangId == shellscript && shellExecutionSupported"
         },
         {
-          "command": "bash-runner.execBashFileRoot",
+          "command": "bash-sh-runner.execBashFileRoot",
           "group": "bash",
           "when": "resourceLangId == shellscript && !isInDiffEditor && shellExecutionSupported"
         },
         {
-          "command": "bash-runner.execBashFileArgsRoot",
+          "command": "bash-sh-runner.execBashFileArgsRoot",
           "group": "bash",
           "when": "resourceLangId == shellscript && !isInDiffEditor && shellExecutionSupported"
         }
@@ -150,7 +150,7 @@
       {
         "title": "Bash Runner",
         "properties": {
-          "bash-runner.runBashIn": {
+          "bash-sh-runner.runBashIn": {
             "type": "string",
             "enum": [
               "Terminal"
@@ -162,7 +162,7 @@
             "description": "Where the bash file should be executed",
             "scope": "resource"
           },
-          "bash-runner.shellPath": {
+          "bash-sh-runner.shellPath": {
             "type": "string",
             "enum": [
               "/bin/bash",
@@ -176,7 +176,7 @@
             "description": "Shell Script Path",
             "scope": "machine"
           },
-          "bash-runner.saveFileBeforeRun": {
+          "bash-sh-runner.saveFileBeforeRun": {
             "type": "boolean",
             "default": true,
             "scope": "resource",

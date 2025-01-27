@@ -6,7 +6,7 @@ import * as bashArgs from "./arguments";
 export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      "bash-runner.execBashFile",
+      "bash-sh-runner.execBashFile",
       (uri?: vscode.Uri): Promise<boolean> => {
         const filepath = uri || vscode.window.activeTextEditor?.document.uri;
         if (!filepath) throw new Error("No file path provided");
@@ -18,7 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      "bash-runner.execBashFileArgs",
+      "bash-sh-runner.execBashFileArgs",
       async (uri?: vscode.Uri): Promise<boolean> => {
         const filepath = uri || vscode.window.activeTextEditor?.document.uri;
         if (!filepath) throw new Error("No file path provided");
@@ -35,7 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      "bash-runner.execBashFileRoot",
+      "bash-sh-runner.execBashFileRoot",
       (uri?: vscode.Uri): Promise<boolean> => {
         const filepath = uri || vscode.window.activeTextEditor?.document.uri;
         if (!filepath) throw new Error("No file path provided");
@@ -47,7 +47,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand(
-      "bash-runner.execBashFileArgsRoot",
+      "bash-sh-runner.execBashFileArgsRoot",
       async (uri?: vscode.Uri): Promise<boolean> => {
         const filepath = uri || vscode.window.activeTextEditor?.document.uri;
         if (!filepath) throw new Error("No file path provided");

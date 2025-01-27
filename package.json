@@ -1,0 +1,220 @@
+{
+  "name": "bash-runner",
+  "displayName": "Bash Runner",
+  "publisher": "leosj29",
+  "description": "Run bash files in the VS Code terminal",
+  "version": "1.0.0",
+  "icon": "media/icon.png",
+  "qna": "marketplace",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "bash",
+    "shellscript",
+    "sh",
+    ".sh",
+    "execute",
+    "run",
+    "menu",
+    "terminal"
+  ],
+  "categories": [
+    "Other",
+    "Debuggers"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leosj29/vscode-bash-runner"
+  },
+  "bugs": {
+    "url": "https://github.com/leosj29/vscode-bash-runner/issues"
+  },
+  "author": {
+    "name": "Leonardo SJ",
+    "url": "https://github.com/leosj29"
+  },
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onCommand:onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "bash-runner.execBashFile",
+        "category": "Bash Runner",
+        "title": "Run",
+        "shortTitle": "Run bash file",
+        "icon": "$(run)",
+        "enablement": "resourceLangId == shellscript && !isInDiffEditor && shellExecutionSupported"
+      },
+      {
+        "command": "bash-runner.execBashFileArgs",
+        "category": "Bash Runner",
+        "title": "Run with Arguments",
+        "shortTitle": "Run bash file w/ args",
+        "icon": "$(debug-coverage)",
+        "enablement": "resourceLangId == shellscript && !isInDiffEditor && shellExecutionSupported"
+      },
+      {
+        "command": "bash-runner.execBashFileRoot",
+        "category": "Bash Runner",
+        "title": "Run as Root",
+        "shortTitle": "Run bash file as root",
+        "icon": "$(run-above)",
+        "enablement": "resourceLangId == shellscript && !isInDiffEditor && shellExecutionSupported"
+      },
+      {
+        "command": "bash-runner.execBashFileArgsRoot",
+        "category": "Bash Runner",
+        "title": "Run with Arguments as Root",
+        "shortTitle": "Run bash file w/ args as root",
+        "icon": "$(run-above)",
+        "enablement": "resourceLangId == shellscript && !isInDiffEditor && shellExecutionSupported"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "bash-runner.execBashFile",
+        "key": "F5",
+        "enablement": "resourceLangId == shellscript && !isInDiffEditor && shellExecutionSupported && !inDebugMode"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "bash-runner.execBashFile",
+          "group": "bash",
+          "when": "resourceLangId == shellscript && shellExecutionSupported"
+        },
+        {
+          "command": "bash-runner.execBashFileArgs",
+          "group": "bash",
+          "when": "resourceLangId == shellscript && shellExecutionSupported"
+        },
+        {
+          "command": "bash-runner.execBashFileRoot",
+          "group": "bash",
+          "when": "resourceLangId == shellscript && shellExecutionSupported"
+        },
+        {
+          "command": "bash-runner.execBashFileArgsRoot",
+          "group": "bash",
+          "when": "resourceLangId == shellscript && shellExecutionSupported"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "bash-runner.execBashFile",
+          "group": "bash",
+          "when": "resourceLangId == shellscript && shellExecutionSupported"
+        },
+        {
+          "command": "bash-runner.execBashFileArgs",
+          "group": "bash",
+          "when": "resourceLangId == shellscript && shellExecutionSupported"
+        },
+        {
+          "command": "bash-runner.execBashFileRoot",
+          "group": "bash",
+          "when": "resourceLangId == shellscript && shellExecutionSupported"
+        },
+        {
+          "command": "bash-runner.execBashFileArgsRoot",
+          "group": "bash",
+          "when": "resourceLangId == shellscript && shellExecutionSupported"
+        }
+      ],
+      "editor/title/run": [
+        {
+          "command": "bash-runner.execBashFile",
+          "group": "bash",
+          "when": "resourceLangId == shellscript && !isInDiffEditor && shellExecutionSupported"
+        },
+        {
+          "command": "bash-runner.execBashFileArgs",
+          "group": "bash",
+          "when": "resourceLangId == shellscript && shellExecutionSupported"
+        },
+        {
+          "command": "bash-runner.execBashFileRoot",
+          "group": "bash",
+          "when": "resourceLangId == shellscript && !isInDiffEditor && shellExecutionSupported"
+        },
+        {
+          "command": "bash-runner.execBashFileArgsRoot",
+          "group": "bash",
+          "when": "resourceLangId == shellscript && !isInDiffEditor && shellExecutionSupported"
+        }
+      ]
+    },
+    "configuration": [
+      {
+        "title": "Bash Runner",
+        "properties": {
+          "bash-runner.runBashIn": {
+            "type": "string",
+            "enum": [
+              "Terminal"
+            ],
+            "enumDescriptions": [
+              "Open the bash files in the built-in VS Code terminal"
+            ],
+            "default": "Terminal",
+            "description": "Where the bash file should be executed",
+            "scope": "resource"
+          },
+          "bash-runner.shellPath": {
+            "type": "string",
+            "enum": [
+              "/bin/bash",
+              "/bin/sh"
+            ],
+            "enumDescriptions": [
+              "bash",
+              "sh"
+            ],
+            "default": "/bin/bash",
+            "description": "Shell Script Path",
+            "scope": "machine"
+          },
+          "bash-runner.saveFileBeforeRun": {
+            "type": "boolean",
+            "default": true,
+            "scope": "resource",
+            "description": "Save the current bash file before running it"
+          }
+        }
+      }
+    ]
+  },
+  "capabilities": {
+    "virtualWorkspaces": {
+      "supported": false,
+      "description": "Bash runner does currently not support virtual workspaces. Because it needs to have the files on disk to execute them."
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "watch": "npm run esbuild-base -- --sourcemap --watch",
+    "lint": "eslint src --ext ts"
+  },
+  "engines": {
+    "vscode": "^1.91.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@types/sinon": "^17.0.3",
+    "@types/vscode": "^1.91.0",
+    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "@typescript-eslint/parser": "^7.16.1",
+    "@vscode/test-electron": "^2.4.1",
+    "@vscode/test-cli": "^0.0.10",
+    "esbuild": "^0.23.1",
+    "eslint": "^8.56.0",
+    "mocha": "^10.6.1",
+    "sinon": "^18.0.0",
+    "typescript": "^5.5.4"
+  }
+}

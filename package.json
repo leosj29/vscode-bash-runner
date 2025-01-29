@@ -3,7 +3,7 @@
   "displayName": "Bash Runner",
   "publisher": "leosj29",
   "description": "Run bash files in the VS Code terminal",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "icon": "media/icon.png",
   "qna": "marketplace",
   "license": "SEE LICENSE IN LICENSE",
@@ -150,18 +150,6 @@
       {
         "title": "Bash Runner",
         "properties": {
-          "bash-sh-runner.runBashIn": {
-            "type": "string",
-            "enum": [
-              "Terminal"
-            ],
-            "enumDescriptions": [
-              "Open the bash files in the built-in VS Code terminal"
-            ],
-            "default": "Terminal",
-            "description": "Where the bash file should be executed",
-            "scope": "resource"
-          },
           "bash-sh-runner.shellPath": {
             "type": "string",
             "enum": [

@@ -44,9 +44,7 @@ async function runBashFileInTerminal(
   const sudo = bRoot ? "sudo" : "";
   const filepath = file.fsPath;
   const workingDirectory = path.dirname(filepath);
-  const command = `${sudo} clear && cd "${workingDirectory}" && "${filepath}" ${args.join(
-    " "
-  )}`;
+  const command = `${sudo} clear && "${filepath}" ${args.join(" ")}`;
   terminal.sendText(command, true);
   terminal.show();
   return true;
